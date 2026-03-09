@@ -1,7 +1,19 @@
-<a href="/turmas/{{nivel}}/1">1º Bimestre</a>
+{% extends "base.html" %}
 
-<a href="/turmas/{{nivel}}/2">2º Bimestre</a>
+{% block conteudo %}
 
-<a href="/turmas/{{nivel}}/3">3º Bimestre</a>
+<div class="card">
 
-<a href="/turmas/{{nivel}}/4">4º Bimestre</a>
+<h2>Escolha o bimestre</h2>
+
+<a class="botao" href="/turmas/{{nivel}}/1">1º Bimestre</a>
+
+<a class="botao" href="/turmas/{{nivel}}/2">2º Bimestre</a>
+
+<a class="botao" href="/turmas/{{nivel}}/3">3º Bimestre</a>
+
+<a class="botao" href="/turmas/{{nivel}}/4">4º Bimestre</a>
+
+</div>
+
+{% endblock %}
