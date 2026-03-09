@@ -7,16 +7,16 @@ usuario_correto = "professor"
 senha_correta = "1234"
 
 fundamental = [
-"6º A","6º B",
-"7º A","7º B",
-"8º A","8º B",
-"9º A","9º B"
+"6A","6B",
+"7A","7B",
+"8A","8B",
+"9A","9B"
 ]
 
 medio = [
-"1º Ano",
-"2º Ano",
-"3º Ano"
+"1M",
+"2M",
+"3M"
 ]
 
 
@@ -34,16 +34,16 @@ def entrar():
     if usuario == usuario_correto and senha == senha_correta:
         return render_template("nivel.html")
 
-    return "<h2>Usuário ou senha incorretos</h2>"
+    return "Usuário ou senha incorretos"
 
 
 @app.route("/fundamental")
-def fundamental_nivel():
+def tela_fundamental():
     return render_template("bimestre.html", nivel="fundamental")
 
 
 @app.route("/medio")
-def medio_nivel():
+def tela_medio():
     return render_template("bimestre.html", nivel="medio")
 
 
@@ -51,22 +51,16 @@ def medio_nivel():
 def turmas(nivel, bimestre):
 
     if nivel == "fundamental":
-        turmas_lista = fundamental
+        lista = fundamental
     else:
-        turmas_lista = medio
+        lista = medio
 
     return render_template(
         "turmas.html",
-        turmas=turmas_lista,
-        bimestre=bimestre,
-        nivel=nivel
+        turmas=lista,
+        nivel=nivel,
+        bimestre=bimestre
     )
-
-
-# evitar erro no render
-@app.errorhandler(500)
-def erro500(e):
-    return "<h2>Erro interno do servidor</h2><p>Verifique os templates.</p>"
 
 
 if __name__ == "__main__":
