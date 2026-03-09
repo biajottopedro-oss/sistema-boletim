@@ -35,12 +35,23 @@ def entrar():
         return "<h2>Usuário ou senha incorretos</h2>"
 
 @app.route("/fundamental")
-def tela_fundamental():
-    return render_template("turmas.html", turmas=fundamental)
+def fundamental_nivel():
+    return render_template("bimestre.html")
 
 @app.route("/medio")
-def tela_medio():
-    return render_template("turmas.html", turmas=medio)
+def medio_nivel():
+    return render_template("bimestre.html")
+
+@app.route("/turmas/<bimestre>")
+def turmas(bimestre):
+
+    turmas_lista = fundamental + medio
+
+    return render_template(
+        "turmas.html",
+        turmas=turmas_lista,
+        bimestre=bimestre
+    )
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
