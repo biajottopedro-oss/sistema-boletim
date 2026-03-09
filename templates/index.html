@@ -1,54 +1,25 @@
-<style>
+{% extends "base.html" %}
 
-body{
-font-family: Arial, sans-serif;
-background-color:#f0f0f0;
-margin:0;
+{% block conteudo %}
 
-display:flex;
-justify-content:center;
-align-items:center;
+<div class="card">
 
-height:100vh;
-}
+<h2>Login do Sistema</h2>
 
-.login-box{
-background:white;
-width:90%;
-max-width:350px;
-padding:25px;
-border-radius:10px;
-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
-text-align:center;
-}
+<form action="/entrar" method="post">
 
-h2{
-margin-bottom:20px;
-}
+<input type="text" name="usuario" placeholder="Usuário" required>
 
-input{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:5px;
-border:1px solid #ccc;
-font-size:16px;
-}
+<br><br>
 
-button{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#2c7be5;
-color:white;
-border:none;
-border-radius:5px;
-font-size:16px;
-cursor:pointer;
-}
+<input type="password" name="senha" placeholder="Senha" required>
 
-button:hover{
-background:#1a5dc9;
-}
+<br><br>
 
-</style>
+<button class="botao">Entrar</button>
+
+</form>
+
+</div>
+
+{% endblock %}
