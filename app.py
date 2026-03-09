@@ -19,35 +19,34 @@ medio = [
 "3º Ano"
 ]
 
+
 @app.route("/")
 def login():
     return render_template("index.html")
 
+
 @app.route("/entrar", methods=["POST"])
 def entrar():
 
-    usuario = request.form["usuario"]
-    senha = request.form["senha"]
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
 
     if usuario == usuario_correto and senha == senha_correta:
         return render_template("nivel.html")
-    else:
-        return "<h2>Usuário ou senha incorretos</h2>"
+
+    return "<h2>Usuário ou senha incorretos</h2>"
 
 
-# ENSINO FUNDAMENTAL
 @app.route("/fundamental")
 def fundamental_nivel():
     return render_template("bimestre.html", nivel="fundamental")
 
 
-# ENSINO MÉDIO
 @app.route("/medio")
 def medio_nivel():
     return render_template("bimestre.html", nivel="medio")
 
 
-# TURMAS
 @app.route("/turmas/<nivel>/<bimestre>")
 def turmas(nivel, bimestre):
 
@@ -62,6 +61,12 @@ def turmas(nivel, bimestre):
         bimestre=bimestre,
         nivel=nivel
     )
+
+
+# evitar erro no render
+@app.errorhandler(500)
+def erro500(e):
+    return "<h2>Erro interno do servidor</h2><p>Verifique os templates.</p>"
 
 
 if __name__ == "__main__":
